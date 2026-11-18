@@ -18,7 +18,7 @@
     @endif
 
     <form
-        action="/students/{{ $student->id }}"
+        action="{{route('students.update', $student)}}"
         method="POST"
     >
         @csrf
@@ -84,7 +84,7 @@
 
     <br>
 
-    <a href="/students">
+    <a href="{{route('students.index')}}">
         Back to Students
     </a>
 </body>

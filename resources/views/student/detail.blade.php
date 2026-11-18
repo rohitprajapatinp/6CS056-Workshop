@@ -36,13 +36,13 @@
         {{ $student->date_of_birth }}
     </p>
 
-    <a href="/students/{{ $student->id }}/edit">
+    <a href="{{route('students.edit', $student)}}">
         Edit Student
     </a>
 
     <br>
 
-    <a href="/students">
+    <a href="{{route('students.index')}}">
         Back to Students
     </a>
 </body>
