@@ -1,69 +1,25 @@
-
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Course Details</title>
-</head>
-<body>
+<x-layouts.app title="Course Details">
 
     <h1>Course Details</h1>
 
-    @if (session('success'))
-        <p>{{ session('success') }}</p>
-    @endif
+    <p><strong>ID:</strong> {{ $course->id }}</p>
 
-    <p>
-        <strong>ID:</strong>
-        {{ $course->id }}
-    </p>
+    <p><strong>Name:</strong> {{ $course->name }}</p>
 
-    <p>
-        <strong>Name:</strong>
-        {{ $course->name }}
-    </p>
+    <p><strong>Description:</strong> {{ $course->description }}</p>
 
-    <p>
-        <strong>Description:</strong>
-        {{ $course->description }}
-    </p>
+    <p><strong>Duration:</strong> {{ $course->duration }} weeks</p>
 
-    <p>
-        <strong>Duration:</strong>
-        {{ $course->duration }} weeks
-    </p>
+    <p><strong>Fee:</strong> {{ number_format($course->fee, 2) }}</p>
 
-    <p>
-        <strong>Fee:</strong>
-        {{ number_format((float) $course->fee, 2) }}
-    </p>
+    <p><strong>Difficulty:</strong> {{ $course->difficulty }}</p>
 
-    <p>
-        <strong>Difficulty:</strong>
-        {{ $course->difficulty }}
-    </p>
+    <p><strong>Active:</strong> {{ $course->is_active ? 'Yes' : 'No' }}</p>
 
-    <p>
-        <strong>Status:</strong>
-        {{ $course->is_active ? 'Active' : 'Inactive' }}
-    </p>
+    <a href="{{ route('courses.edit', $course) }}" class="btn">
+        Edit Course
+    </a>
 
-    <p>
-        <strong>Created At:</strong>
-        {{ $course->created_at }}
-    </p>
+    <a href="{{ route('courses.index') }}">Back to Courses</a>
 
-    <p>
-        <strong>Updated At:</strong>
-        {{ $course->updated_at }}
-    </p>
-
-    <a href="/courses/{{ $course->id }}/edit">Edit Course</a>
-
-    <br><br>
-
-    <a href="/courses">Back to Courses</a>
-
-</body>
-</html>
+</x-layouts.app>

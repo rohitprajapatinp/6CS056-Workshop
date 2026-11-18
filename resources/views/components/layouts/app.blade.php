@@ -1,4 +1,3 @@
-
 @props(['title' => 'Home'])
 
 <!DOCTYPE html>
