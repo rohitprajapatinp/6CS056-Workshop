@@ -17,9 +17,7 @@ class StudentController extends Controller
         ]);
     }
 
-    public function show($id){
-        $student = Student::findOrFail($id);
-
+    public function show(Student $student){
         return view('student.detail', [
             'student' => $student,
         ]);
@@ -46,17 +44,13 @@ class StudentController extends Controller
             ->with('success', "Student ($student->name) created successfully!");
     }
 
-    public function edit($id){
-        $student = Student::findOrFail($id);
-
+    public function edit(Student $student){
         return view('student.edit', [
             'student' => $student,
         ]);
     }
 
-    public function update(Request $request, $id){
-        $student = Student::findOrFail($id);
-
+    public function update(Request $request, Student $student){
         $validated = $request->validate([
             'name' => 'required|string|max:255',
             'email' => [
@@ -71,12 +65,11 @@ class StudentController extends Controller
         $student->update($validated);
 
         return redirect()
-            ->route('students.show', $student->id)
+            ->route('students.show', $student)
             ->with('success','Student updated successfully!');
     }
 
-    public function destroy($id){
-        $student = Student::findOrFail($id);
+    public function destroy(Student $student){
         $student->delete();
 
         return redirect()
