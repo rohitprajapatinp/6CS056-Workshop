@@ -17,7 +17,7 @@
         </div>
     @endif
 
-    <form action="/student" method="POST">
+    <form action="{{route('students.store')}}" method="POST">
         @csrf
         <div>
             <label for="name">Name</label>
@@ -49,6 +49,6 @@
         </button>
     </form>
     <br>
-    <a href="/students">Back to Students</a>
+    <a href="{{route('students.index')}}">Back to Students</a>
 </body>
 </html>
